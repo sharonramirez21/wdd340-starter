@@ -4,3 +4,203 @@
 *:after {
   box-sizing: border-box;
 }
+
+:root {
+  --font-primary : "Radley", sans-serif;
+  --font-secundary : "Open Sans", sans-serif;
+}
+
+/******* Body ***************/
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-family: var(--font-primary);
+}
+
+a, li, p {
+  font-family: var(--font-secundary);
+}
+
+/******* Wrapper (solo visible en desktop) ***************/
+#wrapper {
+  background-color: white;
+}
+
+/******* Header ***************/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.siteName a {
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+#tools a {
+  color: black;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+/******* Navigation ***************/
+.navigation {
+  background-color: black;
+  margin: 0 1rem;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  flex: 1;
+  text-align: center;
+}
+
+.navigation a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.4rem;
+  font-family: var(--font-primary);
+}
+
+/******* Home ***************/
+.home h1 {
+  margin-left: 1rem;
+}
+
+/******* Hero ***************/
+.hero {
+  position: relative;
+  margin-left: 10px;
+}
+
+.hero-details {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+  padding: 0.4rem;
+  color: #084750;
+  top: 5%;
+  left: 1%;
+  max-width: 200px;
+  font-size: 0.85rem;
+  font-family: var(--font-secundary);
+}
+
+.hero-details a {
+  background-color: #084750;
+  padding: 0.5rem;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-family: var(--font-secundary);
+}
+
+/******* Hero Image ***************/
+.hero-img img {
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+/******* Content (mobile first) ***************/
+.content {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "upgrades"
+    "reviews";
+  gap: 1rem;
+}
+
+.upgrades {
+  grid-area: upgrades;
+}
+
+.reviews {
+  grid-area: reviews;
+}
+
+/******* Upgrades ***************/
+.upgrades-photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.upgrades-photos figure {
+  margin: 0;
+}
+
+.img-box {
+  background-color: #084750;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-box img {
+  max-width: 80%;
+  height: auto;
+}
+
+/******* Reviews ***************/
+.reviews ul li {
+  margin-bottom: 1.5rem;
+}
+
+/******* Footer ***************/
+footer {
+  margin-left: 1rem;
+  margin-top: 3rem;
+}
+
+/*DESKTOP VERSION*/
+@media screen and (min-width: 768px) {
+
+  body {
+    background-image: url("/images/site/checkerboard.jpg");
+  }
+
+  #wrapper {
+    max-width: 960px;
+    margin: 1rem auto;
+    border: 5px solid #084750;
+    border-radius: 8px;
+  }
+
+  .navigation a:hover {
+    background-color: #084750;
+  }
+
+  .hero-details {
+    top: 1.5rem;
+    left: 7rem;
+    font-size: 1rem;
+  }
+
+  .hero-img img {
+    max-width: 100%;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "upgrades reviews";
+  }
+}
