@@ -1,0 +1,11 @@
+<%# Content Heading %>
+
+<% if (title) { %>
+  <h1 class="title-vehicle"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%# messages() %>
+
+<%- grid %>
