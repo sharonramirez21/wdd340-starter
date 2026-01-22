@@ -209,6 +209,29 @@ a, li, p {
   font-size: 20px;
 }
 
+/********** ERROR PAGE *******************/
+.error-title {
+  text-align: center;
+}
+
+.error-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.error-text p {
+  font-size: 15px;
+}
+
+.error-image img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
 /******* Footer ***************/
 footer {
   margin-left: 1rem;
