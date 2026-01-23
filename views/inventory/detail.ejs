@@ -1,0 +1,9 @@
+<%# Content Heading %>
+
+<% if (title) { %>
+  <h1 class="only-vehicle"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- vehicleDetail %>
