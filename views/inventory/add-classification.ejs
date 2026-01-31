@@ -1,0 +1,18 @@
+<div class="add-classification">
+  <h1><%= title %></h1>
+  <%- messages() %>
+
+  <form class="form-classification" action="/inv/add-classification" method="post">
+      <label for="classification_name">Classification Name</label>
+      <span class="form-note">Classification name must not contain spaces or special characters.</span>
+      <input
+          type="text" 
+          name="classification_name" 
+          id="classification_name"
+          pattern="^[A-Za-z0-9]+$"
+          required
+      >
+
+      <button class="btn-addClass" type="submit">Add Classification</button>
+    </form>
+</div>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://byui-cse.github.io/cse340-ww-content/views/account-registration.html -->
+<html lang="es" class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Entrega de registro | Desarrollo web backend</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="./Entrega de registro _ Desarrollo web backend_files/340course-min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="./Entrega de registro _ Desarrollo web backend_files/prism-coy-dev.min.css" media="screen">
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./Entrega de registro _ Desarrollo web backend_files/m=el_main_css"></head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <img src="./Entrega de registro _ Desarrollo web backend_files/small_banner.jpg" alt="Banner del curso">
+    </header>
+    <main>
+      <h1><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Entregar vista de registro</font></font></h1>
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Introducción</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        En la actividad anterior, utilizó el proceso MVC para habilitar el enlace "Mi cuenta" y entregó exitosamente el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Acceso</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Vista al cliente. Esta vista contenía un formulario de inicio de sesión y un enlace para solicitar la vista de registro y crear una cuenta. Esta actividad consiste en hacer que el enlace para solicitar la vista de registro funcione.
+      </font></font></p>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Descripción general del video</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">El video ofrece una descripción general de la actividad, pero no contiene los detalles necesarios para completar cada proceso. Vea el video para obtener una idea general, pero siga los pasos escritos para completar la actividad. Esta es la </font></font><a target="_blank" href="https://byui-cse.github.io/cse340-ww-content/transcripts/account-deliver-registration-view.txt"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">transcripción</font></font></a><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> del video.</font></font></p>
+      <iframe width="560" height="315" src="./Entrega de registro _ Desarrollo web backend_files/5H0aIxO1oC0.html" title="Reproductor de vídeo de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">La vista de inicio de sesión</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Comenzarás esta actividad donde terminó la última: en el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">acceso</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Vista. ¿Por qué? Porque se debe asignar una ruta al enlace y esta debe coincidir con el formato general de la ruta "Mi cuenta".</font></font></p>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Recordarás que la ruta en el enlace "Mi cuenta" se veía así:
+      </font></font></p><div>
+        <code class=" language-markup">href="/account/login"</code><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">.
+      </font></font></div><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+      El </font></font><code>account</code><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">elemento fue colocado en el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">servidor.js</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo como el primer elemento de la función app.use(), mientras que "login" era parte del archivo del enrutador, para indicar el proceso real que se ejecutaría, si se detectaba en el objeto GET.</font></font><span class="notice"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Comprender la ruta y cómo encaja en el proceso MVC es fundamental para el siguiente paso.</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Las dos partes del camino, como se mencionó, se muestran aquí:</font></font><p></p>
+      <figure>
+        <pre class="line-numbers language-javascript" title="Copiar y pegar no te ayuda a aprender. Escríbelo."><code class=" language-javascript"><span class="token comment">// Account routes</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/account"</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/accountRoute"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+        <figcaption><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">app.use para rutas de cuenta en</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">servidor.js</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo</font></font></figcaption>
+      </figure>
+      <figure>
+      <pre class="line-numbers language-javascript" title="Copiar y pegar no te ayuda a aprender. Escríbelo."><code class=" language-javascript"><span class="token comment">// Route to build login view</span>
+router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">,</span> utilities<span class="token punctuation">.</span><span class="token function">handleErrors</span><span class="token punctuation">(</span>accountController<span class="token punctuation">.</span>buildLogin<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+      <figcaption><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Método router.get para la vista de inicio de sesión en</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">accountRoute.js</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo</font></font></figcaption>
+      </figure>
+
+      
+      <ol>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Examine atentamente la ruta href del enlace de registro (si hay alguno) debajo del formulario de inicio de sesión.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Agregue o modifique la ruta href (si es necesario) para que se parezca a la ruta "Mi cuenta", pero indique que se está solicitando la vista "registro".</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Guarde el archivo.</font></font></li>
+      </ol>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">La ruta de registro</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        Es hora de agregar una nueva ruta a la</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Ruta de la cuenta</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo, para iniciar la entrega de la vista de registro.
+      </font></font></p>
+      <ol>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Abrir el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Ruta de la cuenta</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo en el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">rutas</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">carpeta.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Usando la ruta de inicio de sesión como ejemplo (consulte el ejemplo anterior), cree una nueva </font></font><code class=" language-javascript">registration</code><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ruta.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Como antes, la ruta debe activar una función, que se encuentra en el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">controlador de cuenta</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">, que necesitarás construir.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"></font><span title="Código de Visual Studio"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Asegúrese de que VSC</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> 
+          no muestre advertencias ni errores
+           </font><font dir="auto" style="vertical-align: inherit;">.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Guarde el archivo.</font></font></li>
+      </ol>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Controlador de cuentas</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        Con la ruta de registro establecida, es necesario construir la función del controlador de cuenta para procesar la solicitud de vista de registro.
+      </font></font></p>
+      <ol>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Encuentra y abre el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Controlador de cuentas</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">archivo en el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">controladores</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">carpeta.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Agregue algunas líneas vacías debajo de la función existente para mostrar la vista de inicio de sesión. Luego, agregue un comentario y una función que mostrará la vista de registro (la creará más adelante en esta actividad).
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          La función de registro se muestra a continuación (</font></font><mark><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sus nombres pueden ser diferentes a lo que se muestra.</font></font></mark><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">):
+          </font></font><pre class="line-numbers language-javascript" title="Copiar y pegar no te ayuda a aprender. Escríbelo."><code class=" language-javascript"><span class="token comment">/* ****************************************
+*  Deliver registration view
+* *************************************** */</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">buildRegister</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> nav <span class="token operator">=</span> <span class="token keyword">await</span> utilities<span class="token punctuation">.</span><span class="token function">getNav</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"account/register"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">"Register"</span><span class="token punctuation">,</span>
+    nav<span class="token punctuation">,</span>
+    errors<span class="token punctuation">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><font></font>
+<font></font>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span> buildLogin<span class="token punctuation">,</span> buildRegister <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        </li>
+        <li>
+          <h3><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Una explicación</font></font></h3>
+          <ul>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Líneas 1 a 3:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> un comentario de varias líneas que presenta la función.
+            </font></font></li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 4:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> comienza la función, declarándola como asincrónica y pasando solicitud, respuesta y siguiente como parámetros.
+            </font></font></li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 5:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> recupera y almacena la cadena de la barra de navegación para su uso en la vista.
+            </font></font></li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 6:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> llama a la función de renderizado e indica la vista que se devolverá al cliente y abre el objeto que llevará los datos a la vista.
+              </font></font><span class="notice"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Nota: la ruta indica que la vista está dentro de la carpeta "cuenta", que debería estar dentro de la carpeta "vistas".</font></font></span>
+            </li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Líneas 7-8:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> los elementos de datos que se enviarán a la vista.
+            </font></font></li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 9:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> cierra el objeto de datos y la función de renderizado (abierta en la línea 6).
+            </font></font></li>
+            <li><strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 10:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> cierra la función.</font></font></li>
+            <li><strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 11:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> se dejó en blanco intencionalmente.</font></font></li>
+            <li>
+              <strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Línea 12:</font></font></strong><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> exporta la función para su uso en otro lugar</font></font><mark><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">[Nota: esta función se agrega al objeto de exportaciones, el otro nombre de función ya debería existir].</font></font></mark><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">.
+            </font></font></li>
+          </ul>
+        </li>
+        <li><font dir="auto" style="vertical-align: inherit;"></font><span title="Código de Visual Studio"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Asegúrese de que VSC</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> 
+          no muestre advertencias ni errores
+           </font><font dir="auto" style="vertical-align: inherit;">.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Guarde el archivo.</font></font></li>
+      </ol>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Vista de registro</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        Con todo lo demás hecho, es hora de construir el</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">registro</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Vista. Al igual que las demás vistas creadas, debe cumplir las siguientes especificaciones:
+      </font></font></p>
+      <ol>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Ser creado dentro de la</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">cuenta</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">carpeta, dentro de la</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">puntos de vista</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">carpeta.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Se nombrará según el nombre en la función de renderizado del controlador.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Utilice el valor de los datos del título tanto para el título como para los elementos h1.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Tener la capacidad de mostrar un mensaje flash, si se envía uno.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Muestra un formulario HTML de registro que acepta cuatro campos: nombre, apellidos, correo electrónico y contraseña. Cada campo debe ser del tipo correcto.</font></font><mark><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Recuerde aplicar la técnica de seguimiento de datos de la última actividad también a estas entradas de formulario.</font></font></mark>
+        </li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          El formulario debe incluir un botón para enviar los datos de registro. Vea este ejemplo:
+          </font></font><div class="callout">
+            <img src="./Entrega de registro _ Desarrollo web backend_files/registration-form.png" alt="Imagen de un ejemplo de formulario de registro.">
+          </div>
+        </li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">El formulario debe indicar que todos los datos son obligatorios y que la contraseña debe ser: 
+          </font></font><ul>
+            <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">12 caracteres de longitud, mínimo</font></font></li>
+            <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">contener al menos 1 letra mayúscula</font></font></li>
+            <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">contener al menos 1 número</font></font></li>
+            <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">contener al menos 1 carácter especial</font></font></li>
+          </ul>
+          <span class="notice"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">No es necesario hacer cumplir estos requisitos en este momento, ya que se agregarán más adelante.</font></font></span>
+        </li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Opcionalmente, puede agregar un botón para cambiar la contraseña de viñetas a texto sin formato y viceversa. Siga el proceso que se muestra en este video para agregar esta función al formulario:
+</font></font><p><iframe title="Reproductor de vídeo de YouTube" src="./Entrega de registro _ Desarrollo web backend_files/4vIkaZ1qb74.html" width="560" height="315" allowfullscreen="allowfullscreen"></iframe></p>
+
+        </li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Agregue CSS apropiado para representar la vista y el formulario de manera profesional.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"></font><span title="Código de Visual Studio"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Asegúrese de que VSC</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> 
+          no muestre advertencias ni errores
+           </font><font dir="auto" style="vertical-align: inherit;">.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Guarde el archivo.</font></font></li>
+      </ol>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Tiempo de prueba</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        Bien, es importante probar la funcionalidad que se acaba de agregar.
+      </font></font></p>
+      <ol>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Asegúrese de que todos los nombres de archivos sean correctos, especialmente aquellos que requieren otros archivos.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Abra una terminal </font></font><span title="Código de Visual Studio"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">VSC</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> e inicie el servidor de desarrollo - </font></font><code class=" language-javascript">pnpm run dev</code><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Abra un navegador para </font></font><code class=" language-markup">localhost:5500</code><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Haga clic en el enlace “Mi cuenta” en el encabezado.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          El</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">acceso</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Se debe entregar la vista. Busque y haga clic en el enlace para solicitar la vista de registro.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">El</font></font><span class="fn"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">registro</font></font></span><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">La vista debe ser entregada.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Pruebe la vista contra la lista de verificación del frontend.</font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+          Si todo funcionó, levanta el puño y grita "¡Hurra!". Si no, revisa los registros de la terminal para ver si se reporta algún error o pide ayuda a tu equipo de aprendizaje, al ayudante de cátedra o al profesor.
+        </font></font></li>
+        <li><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">¡Detenga el servidor local cuando termine la prueba!</font></font></li>
+      </ol>
+
+      <h2><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Conclusión</font></font></h2>
+      <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+        La práctica hace al maestro. Ya has repetido todo el proceso que comenzaste en la actividad anterior. ¡Sigue así!
+      </font></font></p>
+    </main>
+    <footer>
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Licencia Creative Commons" style="border-width: 0" src="./Entrega de registro _ Desarrollo web backend_files/88x31.png"></a><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">
+      Todos los materiales (excepto donde se indique lo contrario) son de Blaine Robertson y tienen licencia
+       </font></font><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Creative Commons Attribution-ShareAlike 3.0 License</font></font></a><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;"> .
+    </font></font></footer>
+  </div>
+  <script src="./Entrega de registro _ Desarrollo web backend_files/prism-coy-dev.min.js.descarga"></script><div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: &#39;Google Sans&#39;, Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class="VIpgJd-yAWNEb-hvhgNd-Ud7fr"><img src="./Entrega de registro _ Desarrollo web backend_files/24px.svg" width="24" height="24" alt=""><div class=" VIpgJd-yAWNEb-hvhgNd-IuizWc-i3jM8c " dir="ltr">Texto original</div></div><div class="VIpgJd-yAWNEb-hvhgNd-k77Iif"><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">Valora esta traducción</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">Tu opinión servirá para ayudar a mejorar el Traductor de Google</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Buena traducción" aria-label="Buena traducción" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Mala traducción" aria-label="Mala traducción" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="https://translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0" src="./Entrega de registro _ Desarrollo web backend_files/saved_resource.html"></iframe></div></div></div>
+
+
+</body></html>

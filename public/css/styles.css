@@ -240,6 +240,10 @@ a, li, p {
   height: auto;
 }
 
+.error-500 {
+  margin: 1rem;
+}
+
 /******** Vehicle Detail View ********/
 .only-vehicle {
   margin-left: 1rem;
@@ -278,11 +282,283 @@ a, li, p {
   margin-bottom: 0.5rem;
 }
 
+
+/********* FORM ************/
+.form-div {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #084750;
+  border-radius: 6px;
+}
+
+.form-div h1 {
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-primary);
+}
+
+#messages {
+  color: #fff;
+  font-family: var(--font-secundary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font-secundary);
+}
+
+.form input {
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+
+.form input:valid {
+  border-right: 6px solid green;
+}
+
+.form input:invalid {
+  border-right: 6px solid red;
+}
+
+.form button {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background-color: #265a33;
+  color: #fff;
+  width: 200px;
+  font-family: var(--font-secundary);
+  border-radius: 50px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.form-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.form-link a {
+  color: #a2d8e0;
+}
+
+span {
+  color: #fc9e9e;
+  font-family: var(--font-secundary);
+  font-size: 12px;
+}
+
+/************* REGISTER FORM **************/
+.register-part {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #084750;
+  border-radius: 6px;
+}
+
+.register-part h1 {
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-primary);
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-register label {
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font-secundary);
+}
+
+.form-register input {
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.passwordDiv {
+  position: relative;
+  width: 100%;
+}
+
+.passwordDiv input {
+  width: 100%;
+  padding-right: 2rem;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+}
+
+#passwordBtn {
+  position: absolute;
+  right: 10px;
+  top: 30%;
+  font-size: 1.2rem;
+  transform: translateY(-60%);
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-register input:valid {
+  border-right: 6px solid #265a33;
+}
+
+.form-register input:invalid {
+  border-right: 6px solid red;
+}
+
+.btnRegister {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background-color: #265a33;
+  color: #fff;
+  width: 200px;
+  font-family: var(--font-secundary);
+  border-radius: 50px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+/***************** MANAGEMENT ****************************/
+.inv-class-part {
+  max-width: 100%;
+}
+
+.inv-class-part h1 {
+  font-family: var(--font-primary);
+  text-align: center;
+}
+
+/*********** FORM ADD- CLASSIFICATION *************/
+.add-classification {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+#messages {
+  max-width: 50%;
+  color: #000;
+}
+
+.add-classification h1 {
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+.form-classification {
+  display: flex;
+  flex-direction: column;
+  background-color: #084750;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.form-classification span label {
+  font-family: var(--font-secundary);
+  font-size: 15px;
+}
+
+.form-classification input {
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-addClass {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background-color: #265a33;
+  color: #fff;
+  width: 200px;
+  font-family: var(--font-secundary);
+  border-radius: 50px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+/*********** FORM ADD- INVENTORY *************/
+.add-inventory {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.add-inventory h1 {
+  font-family: var(--font-primary);
+  text-align: center;
+}
+
+.form-addinv {
+  background-color: #084750;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.form-addinv legend {
+  font-family: var(--font-primary);
+  font-size: 20px;
+}
+
+.info-form-inv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.info-form-inv label {
+  font-family: var(--font-secundary);
+  font-size: 15px;
+}
+
+.info-form-inv input, select {
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-addinv {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background-color: #265a33;
+  color: #fff;
+  width: 200px;
+  font-family: var(--font-secundary);
+  border-radius: 50px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
 /******* Footer ***************/
 footer {
   margin-left: 1rem;
   margin-top: 3rem;
 }
+
+
 
 /*DESKTOP VERSION*/
 @media screen and (min-width: 768px) {
@@ -324,5 +600,21 @@ footer {
 
   .detail-image {
     margin: 0 auto;
+  }
+
+  .form-div {
+    max-width: 400px;
+  }
+
+  .register-part {
+    max-width: 400px;
+  }
+
+  .add-classification{
+    max-width: 400px;
+  }
+
+  .add-inventory {
+    max-width: 400px;
   }
 }
