@@ -1,0 +1,68 @@
+<div class="add-inventory">
+    <h1>
+        <%= title %>
+    </h1>
+    <%- messages() %>
+
+        <form id="updateForm" class="form-addinv" action="/inv/update" method="post">
+            <fieldset>
+                <legend>Editing Vehicle</legend>
+                <span>All elements are required*</span>
+
+                <div class="info-form-inv">
+                    <!-- classification-->
+                    <label for="classificationList">Classification</label>
+                    <%- classificationList %>
+
+                        <!-- make -->
+                        <label for="inv_make">Make</label>
+                        <input type="text" name="inv_make" id="inv_make" required value="<%= inv_make ?? '' %>">
+
+                        <!-- model -->
+                        <label for="inv_model">Model</label>
+                        <input type="text" name="inv_model" id="inv_model" required value="<%= inv_model ?? '' %>">
+
+                        <!-- year -->
+                        <label for="inv_year">Year</label>
+                        <input type="number" name="inv_year" id="inv_year" required min="1900" max="2099"
+                            value="<%= inv_year ?? '' %>">
+
+                        <!-- description -->
+                        <label for="inv_description">Description</label>
+                        <textarea name="inv_description" id="inv_description"
+                            required><%= inv_description ?? '' %></textarea>
+
+                        <!-- img -->
+                        <label for="inv_image">Image Path</label>
+                        <input type="text" name="inv_image" id="inv_image" required
+                            value="<%= inv_image ?? '/images/vehicles/no-image.png' %>">
+
+                        <!-- thumbnail -->
+                        <label for="inv_thumbnail">Thumbnail</label>
+                        <input type="text" name="inv_thumbnail" id="inv_thumbnail" required
+                            value="<%= inv_thumbnail ?? '/images/vehicles/no-image-tn.png' %>">
+
+                        <!-- price -->
+                        <label for="inv_price">Price</label>
+                        <input type="number" name="inv_price" id="inv_price" required min="0" step="0.01"
+                            value="<%= inv_price ?? '' %>">
+
+                        <!-- miles -->
+                        <label for="inv_miles">Miles</label>
+                        <input type="number" name="inv_miles" id="inv_miles" required min="0"
+                            value="<%= inv_miles ?? '' %>">
+
+                        <!-- color -->
+                        <label for="inv_color">Color</label>
+                        <input type="text" name="inv_color" id="inv_color" required value="<%= inv_color ?? '' %>">
+
+                        <button class="btn-addinv" type="submit" disabled>Update Vehicle</button>
+                        <input type="hidden" name="inv_id"
+                            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% }
+                        %>>
+                </div>
+            </fieldset>
+        </form>
+</div>
+
+<script src="/js/inv-update.js"></script>

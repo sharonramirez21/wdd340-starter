@@ -445,6 +445,46 @@ span {
   text-align: center;
 }
 
+.inv-class-part h2, p {
+  font-family: var(--font-primary);
+  margin-left: 1rem;
+  max-width: 100%;
+}
+
+#classificationList {
+  margin-left: 1rem;
+}
+
+#inventoryDisplay {
+  margin: 1rem;
+  max-width: 95%;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  border: 1px solid #084750;
+  padding: 0.5rem;
+  text-align: left;
+  font-family: var(--font-secundary);
+}
+
+#inventoryDisplay thead {
+  background-color: #f4f4f4;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#inventoryDisplay a {
+  color: #084750;
+  text-decoration: none;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}
+
 /*********** FORM ADD- CLASSIFICATION *************/
 .add-classification {
   width: 100%;

@@ -5,6 +5,8 @@
 /* ***********************
  * Require Statements
  *************************/
+const cookieParser = require("cookie-parser")
+
 const session = require("express-session")
 const pool = require('./database/')
 
@@ -49,6 +51,10 @@ app.use(session({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true})) // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
 
 /**
  * Express message middleware

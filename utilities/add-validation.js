@@ -85,6 +85,9 @@ validate.inventoryRules = () => {
     ]
 }
 
+/**
+ * CHECK INVENTORY DATA
+ */
 validate.checkInventoryData = async (req, res, next ) => {
     const errors = validationResult(req)
 
@@ -106,5 +109,30 @@ validate.checkInventoryData = async (req, res, next ) => {
     next()
 }
 
+
+/**
+ * CHECK UPDATE INVENTORY DATA
+ */
+validate.checkUpdateData = async (req, res, next ) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        const inv_id = parseInt(req.body.inv_id)
+        let nav = await utilities.getNav()
+        let classificationList = await utilities.buildClassificationList(
+            req.body.classification_id
+        )
+
+        res.render("inventory/edit-inventory", {
+            title: "Edit Vehicle",
+            nav,
+            errors,
+            inv_id,
+            classificationList,
+            ...req.body,
+        })
+        return
+    }
+    next()
+}
 
 module.exports = validate
