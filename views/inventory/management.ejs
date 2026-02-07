@@ -2,18 +2,33 @@
     <h1><%= title %></h1>
     <%- messages() %>
 
-    <ul>
-        <li><a href="/inv/add-classification">Add Classification</a></li>
-        <li><a href="/inv/add-inventory">Add New Inventory</a></li>
-    </ul>
+    <h2>Welcome <%= accountData.account_firstname %></h2>
+    <p>
+        <a href="/account/update">
+            Update Account Information
+        </a>
+    </p>
+    <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
+        <h3>Inventory Management</h3> 
+        <p>
+            <a href="/inv/">Go to Inventory Management</a>
+        </p>
+   
+   
+        <ul>
+            <li><a href="/inv/add-classification">Add Classification</a></li>
+            <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+        </ul>
 
-    <h2>Manage Inventory</h2>
-    <p>Select a classification from the list to see the items belonging to the classification.</p>
+        <h2>Manage Inventory</h2>
+        <p>Select a classification from the list to see the items belonging to the classification.</p>
 
-    <%- classificationList %>
+        <%- classificationList %>
 
-    <table id="inventoryDisplay"></table>
-    <noscript>JavaScript must be enabled to use this page.</noscript>
+        <table id="inventoryDisplay"></table>
+        <noscript>JavaScript must be enabled to use this page.</noscript>
 
-    <script src="../../js/inventory.js"></script>
+        <script src="../../js/inventory.js"></script>
+
+    <% } %>
 </div>

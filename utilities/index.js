@@ -117,21 +117,22 @@ Util.handleErrors = fn => (req, res, next) => {
 * Middleware to check token validity
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
- if (req.cookies.jwt) {
-  jwt.verify(
-   req.cookies.jwt,
-   process.env.ACCESS_TOKEN_SECRET,
-   function (err, accountData) {
-    if (err) {
-     req.flash("Please log in")
-     res.clearCookie("jwt")
-     return res.redirect("/account/login")
-    }
-    res.locals.accountData = accountData
-    res.locals.loggedin = 1
-    next()
-   })
- } else {
+  res.locals.loggedin = false
+  if (req.cookies.jwt) {
+    jwt.verify(
+    req.cookies.jwt,
+    process.env.ACCESS_TOKEN_SECRET,
+    function (err, accountData) {
+      if (err) {
+        req.flash("Please log in")
+        res.clearCookie("jwt")
+        return res.redirect("/account/login")
+      }
+      res.locals.accountData = accountData
+      res.locals.loggedin = 1
+      next()
+    })
+  } else {
   next()
  }
 }
@@ -146,6 +147,17 @@ Util.checkLogin = (req, res, next) => {
     req.flash("notice", "Please log in.")
     return res.redirect("account/login")
   }
+}
+
+/**
+ * CHECK IF THE PERSON IS ADMIN OR EMPLOYEE
+ */
+Util.checkAdminEmployee = (req, res, next) => {
+  if (res.locals.loggedin && (res.locals.accountData.account_type === "Employee" || res.locals.accountData.account_type === "Admin")) {
+    return next()
+  }
+  req.flash("notice", "Please log in with an Employee or Admin account.")
+  return res.redirect("/account/login")
 }
 
 module.exports = Util

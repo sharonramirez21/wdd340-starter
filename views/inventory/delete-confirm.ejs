@@ -1,0 +1,40 @@
+<div class="add-inventory">
+    <h1>
+        <%= title %>
+    </h1>
+    <%- messages() %>
+
+        <form id="updateForm" class="form-addinv" action="/inv/delete" method="post">
+            <fieldset>
+                <legend>Delete Vehicle</legend>
+                <p>Confirm Deletion - The delete is permanent.</p>
+
+                <div class="info-form-inv">
+                    <!-- classification-->
+                    <label for="classificationList">Classification</label>
+                    <%- classificationList %>
+
+                        <!-- make -->
+                        <label for="inv_make">Make</label>
+                        <input type="text" name="inv_make" id="inv_make" required value="<%= inv_make ?? '' %>" readonly>
+
+                        <!-- model -->
+                        <label for="inv_model">Model</label>
+                        <input type="text" name="inv_model" id="inv_model" required value="<%= inv_model ?? '' %>" readonly>
+
+                        <!-- year -->
+                        <label for="inv_year">Year</label>
+                        <input type="number" name="inv_year" id="inv_year" required min="1900" max="2099" value="<%= inv_year ?? '' %>" readonly>
+
+                        <!-- price -->
+                        <label for="inv_price">Price</label>
+                        <input type="number" name="inv_price" id="inv_price" required min="0" step="0.01" value="<%= inv_price ?? '' %>" readonly>
+
+                        <button class="btn-addinv" type="submit">Delete Vehicle</button>
+                        <input type="hidden" name="inv_id"
+                            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% }
+                        %>>
+                </div>
+            </fieldset>
+        </form>
+</div>

@@ -16,5 +16,13 @@ router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, Util
 // Account Management View
 router.get("/", Util.checkLogin, Util.handleErrors(accountController.buildAccountManagement))
 
+// account-info form
+router.get("/update", Util.checkLogin, Util.handleErrors(accountController.updateInfoAccount))
+router.post("/update", Util.checkLogin, Util.handleErrors(accountController.updateAccountInfo))
 
+// account-password form
+router.post("/update-password", Util.checkLogin, Util.handleErrors(accountController.updatePassword))
+
+// logout router
+router.get("/logout", Util.handleErrors(accountController.accountLogout))
 module.exports = router;

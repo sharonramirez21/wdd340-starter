@@ -45,9 +45,16 @@ a, li, p {
 }
 
 #tools a {
-  color: black;
+  color: #ffff;
   text-decoration: none;
   font-size: 13px;
+  background-color: #000;
+  padding: 3px;
+  border-radius: 6px;
+  display: flex;
+  text-align: center;
+  margin: 1rem;
+  cursor: pointer;
 }
 
 /******* Navigation ***************/
@@ -592,12 +599,63 @@ span {
   cursor: pointer;
 }
 
+/************** UPDATE PART ****************/
+.update-title {
+  font-family: var(--font-primary);
+  text-align: center;
+}
+
+.update-info {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.form-update fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-update {
+  margin-bottom: 1rem;
+  background-color: #084750;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #fff;
+  font-family: var(--font-secundary);
+}
+
+.form-update label {
+  font-family: var(--font-secundary);
+  font-size: 15px;
+}
+
+.form-update input {
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.updateBTN {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background-color: #265a33;
+  color: #fff;
+  width: 200px;
+  font-family: var(--font-secundary);
+  border-radius: 50px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
 /******* Footer ***************/
 footer {
   margin-left: 1rem;
   margin-top: 3rem;
 }
-
 
 
 /*DESKTOP VERSION*/
@@ -656,5 +714,15 @@ footer {
 
   .add-inventory {
     max-width: 400px;
+  }
+
+  .update-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-update {
+    width: 90%;
+    margin: 0 auto;
   }
 }

@@ -22,7 +22,7 @@ router.get("/add-classification", invController.buildAddClassification)
 router.post("/add-classification", addValidate.classificationRules(), addValidate.checkClassificationData, invController.addClassification)
 
 // add-inventory 
-router.get("/add-inventory", invController.buildAddInventory)
+router.get("/add-inventory", Util.checkAdminEmployee, invController.buildAddInventory)
 router.post("/add-inventory", validate.inventoryRules(), validate.checkInventoryData , invController.addInventory)
 
 // Inventory Route with json
@@ -33,5 +33,10 @@ router.get("/edit/:inv_id", Util.handleErrors(invController.editInventoryView))
 
 // update inventory or vehicle
 router.post("/update", validate.inventoryRules(), validate.checkUpdateData, Util.handleErrors(invController.updateInventory))
+
+// delete vehicle 
+router.get("/delete/:inv_id", Util.handleErrors(invController.deleteInventoryView))
+router.post("/delete", Util.handleErrors(invController.deleteVehicle))
+
 
 module.exports =  router;
