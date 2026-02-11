@@ -18,10 +18,10 @@ router.get("/", Util.checkLogin, Util.handleErrors(accountController.buildAccoun
 
 // account-info form
 router.get("/update", Util.checkLogin, Util.handleErrors(accountController.updateInfoAccount))
-router.post("/update", Util.checkLogin, Util.handleErrors(accountController.updateAccountInfo))
+router.post("/update", Util.checkLogin, regValidate.updateAccountRules(), regValidate.checkUpdateData, Util.handleErrors(accountController.updateAccountInfo))
 
 // account-password form
-router.post("/update-password", Util.checkLogin, Util.handleErrors(accountController.updatePassword))
+router.post("/update-password", Util.checkLogin, regValidate.updatePasswordRules(), regValidate.checkPasswordData, Util.handleErrors(accountController.updatePassword))
 
 // logout router
 router.get("/logout", Util.handleErrors(accountController.accountLogout))

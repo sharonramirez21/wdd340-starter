@@ -15,28 +15,28 @@ router.get("/detail/:invId", invController.buildDetail);
 router.get("/trigger-error", invController.triggerError)
 
 // dealing with inventory 
-router.get("/", invController.buildManagement)
+router.get("/", Util.checkLogin, Util.checkAdminEmployee, invController.buildManagement)
 
 // add-classification
-router.get("/add-classification", invController.buildAddClassification)
-router.post("/add-classification", addValidate.classificationRules(), addValidate.checkClassificationData, invController.addClassification)
+router.get("/add-classification", Util.checkLogin, Util.checkAdminEmployee, invController.buildAddClassification)
+router.post("/add-classification", Util.checkLogin, Util.checkAdminEmployee, addValidate.classificationRules(), addValidate.checkClassificationData, invController.addClassification)
 
 // add-inventory 
-router.get("/add-inventory", Util.checkAdminEmployee, invController.buildAddInventory)
-router.post("/add-inventory", validate.inventoryRules(), validate.checkInventoryData , invController.addInventory)
+router.get("/add-inventory", Util.checkLogin ,Util.checkAdminEmployee, invController.buildAddInventory)
+router.post("/add-inventory", Util.checkLogin, Util.checkAdminEmployee, validate.inventoryRules(), validate.checkInventoryData , invController.addInventory)
 
 // Inventory Route with json
 router.get("/getInventory/:classification_id", Util.handleErrors(invController.getInventoryJSON))
 
 // for edit link 
-router.get("/edit/:inv_id", Util.handleErrors(invController.editInventoryView))
+router.get("/edit/:inv_id", Util.checkLogin, Util.checkAdminEmployee, Util.handleErrors(invController.editInventoryView))
 
 // update inventory or vehicle
-router.post("/update", validate.inventoryRules(), validate.checkUpdateData, Util.handleErrors(invController.updateInventory))
+router.post("/update", Util.checkLogin, Util.checkAdminEmployee, validate.inventoryRules(), validate.checkUpdateData, Util.handleErrors(invController.updateInventory))
 
 // delete vehicle 
-router.get("/delete/:inv_id", Util.handleErrors(invController.deleteInventoryView))
-router.post("/delete", Util.handleErrors(invController.deleteVehicle))
+router.get("/delete/:inv_id", Util.checkLogin, Util.checkAdminEmployee, Util.handleErrors(invController.deleteInventoryView))
+router.post("/delete", Util.checkLogin, Util.checkAdminEmployee, Util.handleErrors(invController.deleteVehicle))
 
 
 module.exports =  router;

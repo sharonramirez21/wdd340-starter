@@ -15,6 +15,9 @@
                 id="account_firstname"
                 required
                 value="<%= account_firstname || '' %>"
+                pattern="^[A-Za-z\s'-]{2,}$"
+                title="Only letters, spaces, apostrophes and hyphens allowed"
+                autocomplete="given-name"
             >
 
             <label for="account_lastname">Last Name</label>
@@ -24,6 +27,9 @@
                 id="account_lastname"
                 required
                 value="<%= account_lastname || '' %>"
+                pattern="^[A-Za-z\s'-]{2,}$"
+                title="Only letters allowed"
+                autocomplete="family-name"
             >
 
             <label for="account_email">Email</label>
@@ -33,6 +39,8 @@
                 id="account_email"
                 required
                 value="<%= account_email || '' %>"
+                autocomplete="email"
+                maxlength="254"
             >
 
             <button class="updateBTN" type="submit">Update Account</button>
@@ -53,6 +61,7 @@
                 required
                 minlength="12"
                 pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,}"
+                autocomplete="new-password"
             >
             <button class="updateBTN" type="submit">Change Password</button>
         </fieldset>
