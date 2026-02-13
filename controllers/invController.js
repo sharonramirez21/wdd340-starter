@@ -307,4 +307,32 @@ invCont.deleteVehicle = async (req, res) => {
   }
 }
 
+/**
+ * SEARCH VEHICLE 
+ */
+invCont.searchVehicle = async (req, res, next) => {
+  try {
+    const nav = await utilities.getNav()
+    const term = req.query.term
+
+    if (!term || term.length < 2) {
+      req.flash("notice", "Search term too short")
+      return res.redirect("/")
+    }
+
+    const data = await invModel.searchVehicle(term)
+    const grid = await utilities.buildClassificationGrid(data.rows)
+
+    res.render("inventory/search-results", {
+      title: `Search vehicle for "${term}"`,
+      nav,
+      grid
+    })
+  } catch {
+    console.error("search error:", error)
+    req.flash("notice", "Search failed.")
+    res.redirect("/")
+  }
+}
+
 module.exports = invCont

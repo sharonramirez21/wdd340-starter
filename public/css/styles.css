@@ -57,6 +57,35 @@ a, li, p {
   cursor: pointer;
 }
 
+/******* TOPBAR search *******/
+.search-wrapper {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  gap: .5rem;
+}
+
+.searchForm input {
+  flex: 1;
+  padding: .6rem;
+  min-width: 0;
+}
+
+.searchForm button {
+  padding: .6rem 1rem;
+  white-space: nowrap;
+  background-color: #084750;
+  color:  #fff;
+  border-radius: 6px;
+}
+
 /******* Navigation ***************/
 .navigation {
   background-color: black;
@@ -724,5 +753,9 @@ footer {
   .form-update {
     width: 90%;
     margin: 0 auto;
+  }
+
+  .searchForm {
+    max-width: 60%;
   }
 }

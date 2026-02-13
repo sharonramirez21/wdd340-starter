@@ -131,4 +131,23 @@ async function deleteVehicle(inv_id) {
     }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId , getInventoryById, addClassification, addInventory, updateInventory , deleteVehicle };
+/**
+ * function for search 
+ */
+async function searchVehicle(term) {
+    try {
+        const sql =  `
+            SELECT * 
+            FROM inventory
+            WHERE inv_make ILIKE $1
+                OR inv_model ILIKE $2
+                OR inv_description ILIKE $3
+        `
+        const likeTerm = `%${term}%`
+        return await pool.query(sql, [likeTerm, likeTerm, likeTerm])
+    } catch (error) {
+        console.error("serchVechicle error: ", error)
+    }
+}
+
+module.exports = { getClassifications, getInventoryByClassificationId , getInventoryById, addClassification, addInventory, updateInventory , deleteVehicle, searchVehicle };
