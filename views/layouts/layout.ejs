@@ -5,7 +5,9 @@
     <div id="wrapper">
         <%- include('../partials/header') %>
         <%- include('../partials/navigation') %>
-        <%- include('../partials/topbar') %>
+        <% if (title !== "Login" && title !== "Register" && title !== "Error" && title !== "Account Management" && title !== "Update Account" && title !== "Inventory Management" && title !== "Page Not Found") { %>
+            <%- include("../partials/topbar") %>
+        <% } %>
 
         <main>
             <%- body %>
